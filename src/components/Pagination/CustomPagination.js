@@ -1,5 +1,12 @@
 import React from 'react';
 import Pagination from '@material-ui/lab/Pagination';
+import {createMuiTheme, ThemeProvider} from '@material-ui/core';
+
+const darkTheme = createMuiTheme ({
+  palette: {
+    type: 'dark',
+  },
+});
 
 const CustomPagination = ({setPage, numOfPages = 10}) => {
   const handlePageChange = (page) => {
@@ -8,11 +15,23 @@ const CustomPagination = ({setPage, numOfPages = 10}) => {
   };
 
   return (
-    <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginTop: 10}}>
-      <Pagination
-        count={numOfPages}
-        onChange={e => handlePageChange (e.target.textContext)}
-      />
+    <div
+      style={{
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: 10,
+      }}
+    >
+      <ThemeProvider theme={darkTheme}>
+        <Pagination
+          count={numOfPages}
+          onChange={(e) => handlePageChange(e.target.textContext)}
+          hideNextButton
+          hidePrevButton
+          color="primary"
+        />
+      </ThemeProvider>
     </div>
   );
 };

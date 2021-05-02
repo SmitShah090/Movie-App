@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import CustomPagination from '../../components/Pagination/CustomPagination';
 import SingleContent from '../../components/SingleContent/SingleContent';
-import "./Trending.css";
+import "./Trending.css"
+
 const Trending = () => {
   const [content, setContent] = useState ([]);
   const [page, setPage] = useState(1)
@@ -23,7 +23,7 @@ const Trending = () => {
   return (
     <div>
       <span className="pageTitle">Trending</span>
-      <div classsName="trending">
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around"}} >
         {content &&
           content.map (c => (
             <SingleContent
@@ -37,7 +37,6 @@ const Trending = () => {
             />
           ))}
       </div>
-        <CustomPagination setPage={setPage} />
     </div>
   );
 };
